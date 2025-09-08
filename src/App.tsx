@@ -183,6 +183,19 @@ function App() {
   const clearJson = useCallback(() => {
     setJsonInput('');
   }, []);
+
+  const countItems = useCallback((obj: any): number => {
+    if (obj === null || typeof obj !== 'object') {
+      return 0; // Primitives don't count as items themselves
+    }
+    if (Array.isArray(obj)) {
+      // An array's items are its elements, plus whatever items they contain
+      return obj.length + obj.reduce((acc, item) => acc + countItems(item), 0);
+    }
+    const keys = Object.keys(obj);
+    // An object's items are its keys, plus whatever items the values contain
+    return keys.length + keys.reduce((acc, key) => acc + countItems(obj[key]), 0);
+  }, []);
   const formatBytes = useCallback((bytes: number) => {
     if (bytes === 0) return '0 B';
     const k = 1024;
@@ -289,10 +302,7 @@ function App() {
                 </div>
                 <div className="text-center">
                   <div className="text-white text-sm font-bold">
-                    {typeof parsedJson === 'object' && parsedJson !== null ? 
-                      (Array.isArray(parsedJson) ? parsedJson.length : Object.keys(parsedJson).length) : 
-                      1
-                    }
+                    {countItems(parsedJson)}
                   </div>
                   <div className="text-xs text-gray-400">Items</div>
                 </div>
