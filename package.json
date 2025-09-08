@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && cp -r dist/* . && git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main",
+    "deploy-gh-pages": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
