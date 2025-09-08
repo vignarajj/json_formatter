@@ -237,7 +237,7 @@ function App() {
           )}
           {!canExpand && <div className="w-4" />}
           
-          <span className="text-blue-300 font-mono text-sm">{node.key}</span>
+          <span className="text-gray-300 font-mono text-sm">{node.key}</span>
           
           {!isExpandable && (
             <>
@@ -273,9 +273,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <div className="border-b border-gray-700 bg-black">
+      <div className="border-b border-gray-800 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -287,7 +287,7 @@ function App() {
             
             {/* Compact Statistics in Header */}
             {parsedJson && (
-              <div className="flex items-center gap-6 bg-black px-4 py-2 rounded-lg border border-gray-600">
+              <div className="flex items-center gap-6 bg-gray-800 px-4 py-2 rounded-lg border border-gray-700">
                 <div className="text-center">
                   <div className="text-white text-sm font-bold">
                     {formatBytes(new Blob([JSON.stringify(parsedJson)]).size)}
@@ -315,7 +315,7 @@ function App() {
       <div className="max-w-7xl mx-auto p-4">
         <div className="grid grid-cols-2 gap-6">
           {/* Input Panel */}
-          <div className="bg-black rounded-lg border border-gray-700">
+          <div className="bg-gray-900 rounded-lg border border-gray-800">
             <div className="border-b border-gray-700 px-4 py-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -376,7 +376,7 @@ function App() {
                   value={jsonInput}
                   onChange={(e) => setJsonInput(e.target.value)}
                   placeholder="Paste your JSON here..."
-                  className="w-full h-full px-4 py-4 bg-black text-gray-100 font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-gray-600 border-0 leading-5"
+                  className="w-full h-full px-4 py-4 bg-gray-900 text-gray-100 font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-gray-600 border-0 leading-5"
                   spellCheck={false}
                 />
                 
@@ -414,7 +414,7 @@ function App() {
             </div>
 
             {jsonError && (
-              <div className="border-t border-gray-700 p-4 bg-gray-700 bg-opacity-50">
+              <div className="border-t border-gray-800 p-4 bg-gray-800 bg-opacity-50">
                 <div className="flex items-start gap-2">
                   <AlertCircle className="w-4 h-4 text-gray-300 mt-0.5 flex-shrink-0" />
                   <div>
@@ -427,7 +427,7 @@ function App() {
           </div>
 
           {/* Output Panel */}
-          <div className="bg-black rounded-lg border border-gray-700">
+          <div className="bg-gray-900 rounded-lg border border-gray-800">
             <div className="border-b border-gray-700 px-4 py-3 flex items-center justify-between">
               <h2 className="font-semibold">JSON Tree & Size Analysis</h2>
               {parsedJson && (
